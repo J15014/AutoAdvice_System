@@ -3,14 +3,15 @@ import json
 import mysql.connector
 import datetime
 
-
+# OpenWeatherMap用の設定
 urlbase = 'https://api.openweathermap.org/data/2.5/'
 # /weather?lat={lat}&lon={lon}'
-api_key = '17e86190a841c2a886d5c5462d23d4c7'
+api_key = '各自取得してください'
 
+# DarkSky用の設定
 urlbase2 = 'https://api.darksky.net/forecast/'
 # /Key/latitude,longitude
-api_key2 = 'f9655e502abf64ad9e4ab5628806ab43'
+api_key2 = '各自取得してください'
 
 #Dark sky https://darksky.net/dev/docs#response-format
 weathers={'clear-day':1, 'clear-night':2, 'rain':3, 'snow':4, 'sleet':5, 'wind':6, 'fog':7, 'cloudy':8, 'partly-cloudy-day':9, 'partly-cloudy-night':10, 'hail':11, 'thunderstorm':12, 'tornado':13}
