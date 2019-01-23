@@ -55,8 +55,7 @@ date_str = date.strftime('%Y-%m-%d %H:%M:%S')
 
 ```
 # OpenWeatherMapのAPIのベースURL
-url1 = urlbase + 'weather?lat='+ lat +'&lon='+ lon +
-                            '&appid=' +api_key +'&units=metric'
+url1 = urlbase + 'weather?lat='+ lat +'&lon='+ lon +'&appid=' +api_key +'&units=metric'
 # レスポンスデータ取得
 response = requests.get(url1)
 
