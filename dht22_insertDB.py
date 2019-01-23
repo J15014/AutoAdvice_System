@@ -23,7 +23,6 @@ total_temp = 0
 total_humid = 0
 
 
-
 while True:
 
     humidity, temperature =Adafruit_DHT.read_retry(sensor, pin)
