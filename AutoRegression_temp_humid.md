@@ -6,14 +6,16 @@
 
 
 ### 2. プログラム
-- #### インポート
+- インポート
+
 ~~~
 import datetime
 import mysql.connector
 ~~~
 
-- #### 関数
-    - データの追加
+#### 関数
+ - データの追加
+
 ~~~
     def add_data(value, data):
         array = [0]
@@ -22,7 +24,8 @@ import mysql.connector
             array.append(data[i])
         return array
 ~~~
-    - データの計算
+- データの計算
+
 ~~~
     def calculation(coefficient, data):
         predict = 0
@@ -30,7 +33,8 @@ import mysql.connector
             predict += coefficient[raw] * data[raw]
         return predict
 ~~~
-    - データの挿入あるいは更新
+ - データの挿入あるいは更新
+
 ~~~
     def transfer(cur, conn, predtime, predtemp, predhumid):
         sql_check = "select count(*) from arpredicts where pdatetime
@@ -70,7 +74,8 @@ import mysql.connector
                 conn.rollback()
                 raise
 ~~~
-- #### 本プログラム
+- 本プログラム
+
 ~~~
   #
   # 室内気温自己回帰モデルの計算開始
