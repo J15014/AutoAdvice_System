@@ -13,8 +13,8 @@ import json
 import mysql.connector
 import datetime
 ```
-- 変数宣言　<br>
-・OpenWeatherMapのAPIを使用するためのベースURL
+### 変数宣言
+- OpenWeatherMapのAPIを使用するためのベースURL
 
 ```
 urlbase = 'https://api.openweathermap.org/data/2.5/'
