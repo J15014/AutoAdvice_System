@@ -396,9 +396,7 @@ import mysql.connector
   #
   ############# pred 15 ###############
   #
-  # テーブル名はテスト用にARモデルはarpredicts
-  # ARMAモデルはarmapredictsとしている
-  # 本番環境は predictions
+  # テーブル名:ARモデルはarpredictsとしている
   #
   # print(last_datetime + datetime.timedelta(minutes=10))
   # print(last_datetime + datetime.timedelta(minutes=20))
