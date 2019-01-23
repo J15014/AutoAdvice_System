@@ -36,43 +36,34 @@ import mysql.connector
  - データの挿入あるいは更新
 
 ~~~
-    def transfer(cur, conn, predtime, predtemp, predhumid):
-        sql_check = "select count(*) from arpredicts where pdatetime
-        between '" + str(predtime - datetime.timedelta(minutes=5)) +
-        "' and '"+ str(predtime + datetime.timedelta(minutes=5)) +"'
-        order by pdatetime desc;"
+def transfer(cur, conn, predtime, predtemp, predhumid):
+    sql_check = "select count(*) from arpredicts where pdatetime between '" + str(predtime - datetime.timedelta(minutes=5)) + "' and '"+ str(predtime + datetime.timedelta(minutes=5)) +"' order by pdatetime desc;"
+    cur.execute(sql_check)
+    check_pred = cur.fetchone()
 
-        cur.execute(sql_check)
-        check_pred = cur.fetchone()
+    print("pred check 0:not exist  1:exist   " + str(check_pred[0]))
 
-        print("pred check 0:not exist  1:exist   " + str(check_pred[0]))
+    predcomfort = 0.81* predtemp +0.01* predhumid *(0.99 * predtemp - 14.3)+46.3
 
-        if check_pred[0] is 0:
-            # 挿入先が存在しないときは挿入
-            sql = "insert into arpredicts (predtemp,predhumid,pdatetime)
-            values('"+ str(predtemp)+"' , '"+ str(predhumid) +"' ,
-            '"+ str(predtime) +"');"
+    if check_pred[0] is 0:
+        # 挿入先が存在しないときは挿入
+        sql = "insert into arpredicts (predtemp,predhumid,predcomfort,pdatetime) values('"+ str(predtemp)+"' , '"+ str(predhumid) +"' , '"+ str(predcomfort) +"' , '"+ str(predtime) +"');"
 
-            try:
-                cur.execute(sql)
-                conn.commit()
-            except:
-                conn.rollback()
-                raise
-        else:
-            # 挿入先が存在するときは更新
-            sql = "update arpredicts set predtemp = '"+ str(predtemp)
-            +"' , predhumid = '"+ str(predhumid) +"' where pdatetime
-            between '" + str(predtime - datetime.timedelta(minutes=5))
-            + "' and '"+ str(predtime + datetime.timedelta(minutes=5)) +"'
-            limit 1;"
-
-            try:
-                cur.execute(sql)
-                conn.commit()
-            except:
-                conn.rollback()
-                raise
+        try:
+            cur.execute(sql)
+            conn.commit()
+        except:
+            conn.rollback()
+            raise
+    else:
+        # 挿入先が存在するときは更新
+        sql = "update arpredicts set predtemp = '"+ str(predtemp) +"' , predhumid = '"+ str(predhumid) + "' ,predcomfort = '"+ str(predcomfort) +"' where pdatetime between '" + str(predtime - datetime.timedelta(minutes=5)) + "' and '"+ str(predtime + datetime.timedelta(minutes=5)) +"' limit 1;"
+        try:
+            cur.execute(sql)
+            conn.commit()
+        except:
+            conn.rollback()
+            raise
 ~~~
 - 本プログラム
 
