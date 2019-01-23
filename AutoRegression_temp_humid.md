@@ -37,7 +37,9 @@ import mysql.connector
 
 ~~~
 def transfer(cur, conn, predtime, predtemp, predhumid):
-    sql_check = "select count(*) from arpredicts where pdatetime between '" + str(predtime - datetime.timedelta(minutes=5)) + "' and '"+ str(predtime + datetime.timedelta(minutes=5)) +"' order by pdatetime desc;"
+    sql_check = "select count(*) from arpredicts where pdatetime between '" + 
+    str(predtime - datetime.timedelta(minutes=5)) + "' and '"+ str(predtime + 
+    datetime.timedelta(minutes=5)) +"' order by pdatetime desc;"
     cur.execute(sql_check)
     check_pred = cur.fetchone()
 
@@ -47,7 +49,9 @@ def transfer(cur, conn, predtime, predtemp, predhumid):
 
     if check_pred[0] is 0:
         # 挿入先が存在しないときは挿入
-        sql = "insert into arpredicts (predtemp,predhumid,predcomfort,pdatetime) values('"+ str(predtemp)+"' , '"+ str(predhumid) +"' , '"+ str(predcomfort) +"' , '"+ str(predtime) +"');"
+        sql = "insert into arpredicts (predtemp,predhumid,predcomfort,pdatetime) 
+        values('"+ str(predtemp)+"' , '"+ str(predhumid) +"' , '"+ str(predcomfort) +"' , '"+ 
+        str(predtime) +"');"
 
         try:
             cur.execute(sql)
@@ -57,7 +61,10 @@ def transfer(cur, conn, predtime, predtemp, predhumid):
             raise
     else:
         # 挿入先が存在するときは更新
-        sql = "update arpredicts set predtemp = '"+ str(predtemp) +"' , predhumid = '"+ str(predhumid) + "' ,predcomfort = '"+ str(predcomfort) +"' where pdatetime between '" + str(predtime - datetime.timedelta(minutes=5)) + "' and '"+ str(predtime + datetime.timedelta(minutes=5)) +"' limit 1;"
+        sql = "update arpredicts set predtemp = '"+ str(predtemp) +"' , predhumid = '"+ 
+        str(predhumid) + "' ,predcomfort = '"+ str(predcomfort) +"' where pdatetime 
+        between '" + str(predtime - datetime.timedelta(minutes=5)) + "' and '"+ 
+        str(predtime + datetime.timedelta(minutes=5)) +"' limit 1;"
         try:
             cur.execute(sql)
             conn.commit()
