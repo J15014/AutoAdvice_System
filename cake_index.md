@@ -10,14 +10,14 @@
 -  jQueryを使用する為にjsファイルの使用を定義する
 -  cssファイルも読み込む
 ~~~
- <script src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
- <?php
+<script src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<?php
   echo $this->Html->css('original.css');
 
   $this->assign('title', 'グラフ');
- ?>
- 
- ~~~
+?>
+
+~~~
 
 #### 2.ハンバーガーメニュー
 
@@ -45,30 +45,30 @@
       <!-- グラフ等の　表示 / 非表示　切り替え　ボタン -->
 
       <table  cellpadding="0" cellspacing="0">
-         <tr>
-           <th><p>グラフの切り替え</p></th>
-         </tr>
+        <tr>
+          <th><p>グラフの切り替え</p></th>
+        </tr>
 
-         <div class ="b">
-           <tr>
-             <th>グラフの表示/非表示</th>
-           </tr>
-           <tr>
-             <td>
-               <input type = "button" class= "btnOn" value = "ON">
-               <input type = "button" class= "btnOff" value = "OFF">
-             </td>
-           </tr>
-           <tr>     
-             <th>室内/屋外</th>
-           </tr>
-           <tr>
-             <td>
-               <input type = "button" class = "btnR" value = "室内">
-               <input type = "button" class = "btnO" value = "屋外">
-             </td>
-           </tr>
-         </div>
+        <div class ="b">
+          <tr>
+            <th>グラフの表示/非表示</th>
+          </tr>
+          <tr>
+            <td>
+              <input type = "button" class= "btnOn" value = "ON">
+              <input type = "button" class= "btnOff" value = "OFF">
+            </td>
+          </tr>
+          <tr>     
+            <th>室内/屋外</th>
+          </tr>
+          <tr>
+            <td>
+              <input type = "button" class = "btnR" value = "室内">
+              <input type = "button" class = "btnO" value = "屋外">
+            </td>
+          </tr>
+        </div>
       </table>
     </div>
   </div>
