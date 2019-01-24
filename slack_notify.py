@@ -24,7 +24,7 @@ try:
     # print(result[0][0])
     comfort = result[0][0]
 
-    slack = slackweb.Slack(url="<https://hooks.slack.com/services/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>")
+    slack = slackweb.Slack(url="< **コピーしたURL**>")
 
     if comfort < 55:
         message = "寒くなるだろう"
