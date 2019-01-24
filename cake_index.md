@@ -181,7 +181,7 @@ foreach($PEhumids as $PEhumid):
 ~~~
 <div class = 'ui'　style="margin: 5% 10% 10% 5%">
   <canvas id = "canvas_O" width = "500" height="500"></canvas>
-    <script type="text/javascript">
+  <script type="text/javascript">
     monitorUI();
   </script>
 </div>
