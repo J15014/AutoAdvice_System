@@ -15,17 +15,15 @@
 ~~~
 <!-- 普段は非表示状態に成っている　アイコンが押されたらメニューをcssにしたがって表示する -->
 
-  <div id = "nav-drawer">
-
-    <input id = "nav-input" type = "checkbox" class = "nav-unshown">
-     <label id = "nav-open" for = "nav-input">
-          <span></span>
-          <span></span>
-          <span></span>
-     </label>
-
-     <label class = "nav-unshown" id = "nav-close" for = "nav-input">
-     </label>
+<div id = "nav-drawer">
+  <input id = "nav-input" type = "checkbox" class = "nav-unshown">
+  <label id = "nav-open" for = "nav-input">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <label class = "nav-unshown" id = "nav-close" for = "nav-input">
+  </label>
 
 <!-- メニューコンテンツ -->
   <div id = "nav-content" >
@@ -71,89 +69,87 @@
 - ##### 室内温度表示グラフのプログラム
 
 ~~~
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  </head>
+</html>
 
-       <html>
-           <head>
-               <!--Load the AJAX API-->
-               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-           </head>
-       </html>
+<div　style = "margin: 0% 10% 0% 5%">
+  <script type="text/javascript">
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawBasic);
+    function drawBasic() {
+      var data = new google.visualization.DataTable(
+      );
+      data.addColumn('datetime', 'date');
+      data.addColumn('number', '気温');
+      data.addColumn('number', '予測気温');
+      <?php $max = 0;
+            $min = 99;
+      ?>
+      data.addRows([
+         <?php foreach($PEtemps as $PEtemp):
+           //グラフへの値入力処理
+           $temp = $PEtemp['E']['temperature'];
+           $predtemp = $PEtemp['P']['predtemp'];
+           $upload = $PEtemp['P']['pdate'];
 
-       <div　style = "margin: 0% 10% 0% 5%">
-            <script type="text/javascript">
-              google.charts.load('current', {packages: ['corechart', 'line']});
-              google.charts.setOnLoadCallback(drawBasic);
-                  function drawBasic() {
-                        var data = new google.visualization.DataTable(
-                        );
-                    data.addColumn('datetime', 'date');
-                    data.addColumn('number', '気温');
-                    data.addColumn('number', '予測気温');
-                    <?php $max = 0;
-                          $min = 99;
-                    ?>
-                    data.addRows([
-                          <?php
-                      foreach($PEtemps as $PEtemp):
-                            //グラフへの値入力処理
-                            $temp = $PEtemp['E']['temperature'];
-                            $predtemp = $PEtemp['P']['predtemp'];
-                            $upload = $PEtemp['P']['pdate'];
+           ##グラフの下限・上限を設定する処理
+           if($max < $temp or $max < $predtemp ){
+             if($temp < $predtemp){
+               $max = $predtemp;
+             }else{
+               $max = $temp;
+             }
+           }
 
-                            ##グラフの下限・上限を設定する処理
-                            if($max < $temp or $max < $predtemp ){
-                               if($temp < $predtemp){
-                                 $max = $predtemp;
-                               }else{
-                                 $max = $temp;
-                               }
-                            }
+           if($min > $temp or $min > $predtemp){
+             if($predtemp < $temp){
+               $min =  $predtemp;
+             }else if(!is_null($temp)){
+               $min = $temp;
+             }
+           }
 
-                            if($min > $temp or $min > $predtemp){
-                               if($predtemp < $temp){
-                                 $min =  $predtemp;
-                               }else if(!is_null($temp)){
-                                 $min = $temp;
-                               }
-                            }
+           //グラフへの入力処理
+           echo "[" ?> new Date(
+           <?php echo substr($upload,0, -15)?>,
+           <?php echo substr($upload, 5, -12)-1?>,
+           <?php echo substr($upload, 8, -9)?>,
+           <?php echo substr($upload, 11, -6)?>,
+           <?php echo substr($upload, 14, -3)?>,
+           <?php echo substr($upload, 17)?>)
+           <?php echo ",".$temp.",".$predtemp."],"?>
+        <?php endforeach?>
+      ]);
 
-                            //グラフへの入力処理
-                            echo "[" ?> new Date(
-                            <?php echo substr($upload,0, -15)?>,
-                            <?php echo substr($upload, 5, -12)-1?>,
-                            <?php echo substr($upload, 8, -9)?>,
-                            <?php echo substr($upload, 11, -6)?>,
-                            <?php echo substr($upload, 14, -3)?>,
-                            <?php echo substr($upload, 17)?>)
-                            <?php echo ",".$temp.",".$predtemp."],"?>
-                       <?php endforeach?>
-                ]);
+      //グラフのオプション設定
+      var options = {
+        hAxis: {
+          title: '時間(24時間)'
+        },
+        vAxis: {
+          title: '温度(temp)',
+          minValue: <?php echo $min?>,
+          maxValue: <?php echo $max+1 ?>
+        },
+        series:{
+          1: { lineDashStyle: [4, 4] },
+        },
+        colors:['#4169e1', '#ff4500']
+      };
 
-                       //グラフのオプション設定
-                        var options = {
-                          hAxis: {
-                            title: '時間(24時間)'
-                          },
-                          vAxis: {
-                            title: '温度(temp)',
-                            minValue: <?php echo $min?>,
-                             maxValue: <?php echo $max+1 ?>
-                          },
-                          series:{
-                            1: { lineDashStyle: [4, 4] },
-                          },
-                          colors:['#4169e1', '#ff4500']
-                        };
+      var chart = new google.visualization.LineChart(document.getElementById('chart_divTe'));
+      chart.draw(data, options);
+    }
+  </script>
 
-                        var chart = new google.visualization.LineChart(document.getElementById('chart_divTe'));
-                        chart.draw(data, options);
-                         }
-                </script>
-
-              <body>
-                <div id="chart_divTe" style="width: 900px; height: 500px"></div>
-              </body>
-          </div>
+  <body>
+    <div id="chart_divTe" style="width: 900px; height: 500px"></div>
+  </body>
+</div>
 ~~~
 
 
