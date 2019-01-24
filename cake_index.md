@@ -7,7 +7,7 @@
 
 
 #### 1.宣言
--  JavaScriptを使用する為にjsファイルの使用を定義する
+-  JavaQueryを使用する為にjsファイルの使用を定義する
 -  cssファイルも読み込む
 ~~~
  <script src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
