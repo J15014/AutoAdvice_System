@@ -13,68 +13,63 @@
 -   その画面にあるボタンを押すことで室内グラフと室外グラフを切り替えられる。
 -   ボタンの種類は[室内・室外・ON・OFF]の４種である。
 ~~~
-    <!-- 普段は非表示状態に成っている　アイコンが押されたらメニューをcssにしたがって表示する -->
+<!-- 普段は非表示状態に成っている　アイコンが押されたらメニューをcssにしたがって表示する -->
 
-      <div id = "nav-drawer">
+  <div id = "nav-drawer">
 
-        <input id = "nav-input" type = "checkbox" class = "nav-unshown">
-    	    <label id = "nav-open" for = "nav-input">
-              <span></span>
-              <span></span>
-              <span></span>
-            </label>
+    <input id = "nav-input" type = "checkbox" class = "nav-unshown">
+     <label id = "nav-open" for = "nav-input">
+          <span></span>
+          <span></span>
+          <span></span>
+     </label>
 
-    		<label class = "nav-unshown" id = "nav-close" for = "nav-input">
-            </label>
+     <label class = "nav-unshown" id = "nav-close" for = "nav-input">
+     </label>
 
-    		<!-- メニューコンテンツ -->
-    		<div id = "nav-content" >
-              <div class = "nav-table">
+<!-- メニューコンテンツ -->
+  <div id = "nav-content" >
+    <div class = "nav-table">
 
-                <!-- グラフ等の　表示 / 非表示　切り替え　ボタン -->
+      <!-- グラフ等の　表示 / 非表示　切り替え　ボタン -->
 
-  			   <table  cellpadding="0" cellspacing="0">
-                    <tr>
-                      <th><p>グラフの切り替え</p></th>
-                    </tr>
+      <table  cellpadding="0" cellspacing="0">
+         <tr>
+           <th><p>グラフの切り替え</p></th>
+         </tr>
 
-                    <div class ="b">
-    					      <tr>
-    						      <th>グラフの表示/非表示</th>
-    						  </tr>
-
-        				      <tr>
-                                  <td>
-                                      <input type = "button" class= "btnOn" value = "ON">
-                                      <input type = "button" class= "btnOff" value = "OFF">
-                                  </td>
-                              </tr>
-
-                              <tr>     
-                                <th>室内/屋外</th>
-                              </tr>
-
-                              <tr>
-                                  <td>
-                                      <input type = "button" class = "btnR" value = "室内">
-                                      <input type = "button" class = "btnO" value = "屋外">
-                                  </td>
-                              </tr>
-
-               	   </div>
-
-    			 </table>
-
-              </div>
-            </div>
-        </div>
-    ~~~
+         <div class ="b">
+           <tr>
+             <th>グラフの表示/非表示</th>
+           </tr>
+           <tr>
+             <td>
+               <input type = "button" class= "btnOn" value = "ON">
+               <input type = "button" class= "btnOff" value = "OFF">
+             </td>
+           </tr>
+           <tr>     
+             <th>室内/屋外</th>
+           </tr>
+           <tr>
+             <td>
+               <input type = "button" class = "btnR" value = "室内">
+               <input type = "button" class = "btnO" value = "屋外">
+             </td>
+           </tr>
+         </div>
+      </table>
+    </div>
+  </div>
+</div>
+~~~
 
 #### 2.グラフ表示
 - 温度・湿度・外気の順に縦にグラフを表示する。
 - 温度・湿度のグラフには現在の値と計算で出された推定の値の２線を表示する。
 - 推定値の線は点線で表示している。またグラフの下限・上限は取得したデータの値に合わせて変わる
 - ##### 室内温度表示グラフのプログラム
+
 ~~~
 
        <html>
