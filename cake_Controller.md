@@ -83,6 +83,13 @@
          $Rdata = $this->Environment->query($Rsql, false);
          $Rdata2 = $Rdata[0]['environments']['temperature'];
          $this->set('roomTemp', $Rdata2);
+         
+         //comfortV
+         $this->set('arpredicts', $this->Paginator->paginate());
+         $pSql2 = "select predcomfort from arpredicts where id =(select max(id) from arpredicts);";
+         $Pdata3 = $this->Environment->query($pSql2, false);
+         $Pdata4 = $Pdata3[0]['arpredicts']['predcomfort'];
+         $this->set('arcom', $Pdata4);
 
      }
  }
@@ -90,6 +97,7 @@
  ?>
 ~~~
 UIに表示するためにmax()を用いてテーブル内の最新データのみを取り出して、indexに受け渡す。
+取り出すものは現在気温・推定気温・不快指数の３種
 #### 備考
 -  SQLを実行する際にOptionに'false'をつけることでクエリ実行をキャッシュしないようにすることで、メモリの消費を抑える
 -  15分毎1日分のみを取り出す為に取り出し件数を96件としている
