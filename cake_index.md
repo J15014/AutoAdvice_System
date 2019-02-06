@@ -206,110 +206,143 @@ foreach($PEhumids as $PEhumid):
 <script type = "text/javascript">
 
   function getTemp(){
-    var returnTemp = '0';
-    returnTemp =<?php  echo '"'.$roomTemp.'"' ?>;
-    return returnTemp;
+        var returnTemp = '0';
+        returnTemp =<?php  echo '"'.$roomTemp.'"' ?>;
+        return returnTemp;
   }
 
   function getCTemp(){
-    var returnTemp = '0';
-    returnTemp = <?php echo '"'.$arpretemp.'"'?>;
-    return returnTemp;
+        var returnTemp = '0';
+        returnTemp = <?php echo '"'.$arpretemp.'"'?>;
+        return returnTemp;
+  }
+
+  function getComVal(){
+        var returnVal = '0';
+        returnVal = <?php echo '"'.$arcom.'"'?>;
+        return returnVal;
   }
 
   function monitorUI(){
     //*********************初期設定***********************
-    //四角　後ろ
-    var rect_canvasB = document.getElementById("canvas_O");
-    var rect_ctxB = rect_canvasB.getContext("2d");
-    rect_ctxB.beginPath();
-    //四角　前
-    var rect_canvasF = document.getElementById("canvas_O");
-    var rect_ctxF = rect_canvasF.getContext("2d");
-    rect_ctxF.beginPath();
-    //枠 横上
-    var rect_frameA = document.getElementById("canvas_O");
-    var rect_frameA_ctx = rect_frameA.getContext("2d");
-    rect_frameA_ctx.beginPath();
-    //枠 横下
-    var rect_frameU = document.getElementById("canvas_O");
-    var rect_frameU_ctx = rect_frameU.getContext("2d");
-    rect_frameU_ctx.beginPath();
-    //枠　縦
-    var rect_frameV = document.getElementById("canvas_O");
-    var rect_frameV_ctx = rect_frameV.getContext("2d");
-    rect_frameV_ctx.beginPath();
-    //室温　タイトル
-    var draw_rtmpt = document.getElementById("canvas_O");
-    var rtmpt_ctx = draw_rtmpt.getContext("2d");
-    var rtmpt = '室温';
-    rtmpt_ctx.beginPath();
-    //風速 タイトル
-    var draw_airS = document.getElementById("canvas_O");
-    var airS_ctx = draw_airS.getContext("2d");
-    var airS = '風速';
-    airS_ctx.beginPath();
-    //推奨温度 タイトル
-    var draw_coTmp = document.getElementById("canvas_O");
-    var coTmp_ctx = draw_coTmp.getContext("2d");
-    var coTmp = '推定温度(15分毎)';
-    coTmp_ctx.beginPath();
-    //室温 数値
-    var draw_tmp = document.getElementById("canvas_O");
-    var tmpv_ctx = draw_tmp.getContext("2d");
-    var temp = getTemp();
-    var tmpTxt = temp+'℃';
-    tmpv_ctx.beginPath();
-    //風速 数値
-    var draw_airP = document.getElementById("canvas_O");
-    var airP_ctx = draw_airP.getContext("2d");
-    //var airP = getTemp();
-    var airP = '弱';
-    airP_ctx.beginPath();
-    //推奨温度 数値
-    var draw_coTmpv = document.getElementById("canvas_O");
-    var coTmpv_ctx = draw_coTmpv.getContext("2d");
-    var coTmpv = getCTemp();
-    var ctTxt = coTmpv +'℃';
-    coTmpv_ctx.beginPath();
+        //四角　後ろ
+        var rect_canvasB = document.getElementById("canvas_O");
+        var rect_ctxB = rect_canvasB.getContext("2d");
+        rect_ctxB.beginPath();
+        //四角　前
+        var rect_canvasF = document.getElementById("canvas_O");
+        var rect_ctxF = rect_canvasF.getContext("2d");
+        rect_ctxF.beginPath();
+        //枠 横上
+        var rect_frameA = document.getElementById("canvas_O");
+        var rect_frameA_ctx = rect_frameA.getContext("2d");
+        rect_frameA_ctx.beginPath();
+        //枠 横下
+        var rect_frameU = document.getElementById("canvas_O");
+        var rect_frameU_ctx = rect_frameU.getContext("2d");
+        rect_frameU_ctx.beginPath();
+
+        //枠 横下2
+        var rect_frameU2 = document.getElementById("canvas_O");
+        var rect_frameU2_ctx = rect_frameU2.getContext("2d");
+        rect_frameU2_ctx.beginPath();
+
+        //枠　縦
+        var rect_frameV = document.getElementById("canvas_O");
+        var rect_frameV_ctx = rect_frameV.getContext("2d");
+        rect_frameV_ctx.beginPath();
+        //室温　タイトル
+        var draw_rtmpt = document.getElementById("canvas_O");
+        var rtmpt_ctx = draw_rtmpt.getContext("2d");
+        var rtmpt = '室温';
+        rtmpt_ctx.beginPath();
+
+        //不快指数　タイトル
+        var draw_comfort = document.getElementById("canvas_O");
+        var comfort_ctx = draw_comfort.getContext("2d");
+        var comfort = '不快指数';
+        comfort_ctx.beginPath();
+
+        //推奨温度 タイトル
+        var draw_coTmp = document.getElementById("canvas_O");
+        var coTmp_ctx = draw_coTmp.getContext("2d");
+        var coTmp = '推定温度';
+        coTmp_ctx.beginPath();
+        //室温 数値
+        var draw_tmp = document.getElementById("canvas_O");
+        var tmpv_ctx = draw_tmp.getContext("2d");
+        var temp = getTemp();
+        var tmpTxt = temp+'℃';
+        tmpv_ctx.beginPath();
+
+        //推奨温度 数値
+        var draw_coTmpv = document.getElementById("canvas_O");
+        var coTmpv_ctx = draw_coTmpv.getContext("2d");
+        var coTmpv = getCTemp();
+        var ctTxt = coTmpv +'℃';
+        coTmpv_ctx.beginPath();
+
+        //不快指数 数値
+        var draw_comfotV = document.getElementById("canvas_O");
+        var comfortV_ctx = draw_comfotV.getContext("2d");
+        var comfortV = getComVal();
+        var coTxt = comfortV +'℃';
+        comfortV_ctx.beginPath();
+
     //******************************************
     //**************** 枠組み 表示 ********************
-    // 四角を描く
-    //モニターの外枠　
-    rect_ctxB.fillStyle = "rgb(100,100,100)";
-    rect_ctxB.fillRect(5, 20, 450, 300);
-    //モニターの画面
-    rect_ctxF.fillStyle = "rgb(168,239,175)";
-    rect_ctxF.fillRect(30, 45, 400, 250);
-    //枠 横上
-    rect_frameA_ctx.strokeStyle = "rgb(0,0,0)";
-    rect_frameA_ctx.lineWidth = 3;
-    rect_frameA_ctx.strokeRect(31, 100, 398, 65);
-    //枠 横下
-    rect_frameU_ctx.lineWidth = 3;
-    rect_frameU_ctx.strokeStyle = "rgb(0,0,0)";
-    rect_frameU_ctx.strokeRect(31, 165, 398, 65);
-    //枠　縦
-    rect_frameV_ctx.lineWidth = 3;
-    rect_frameV_ctx.strokeStyle = "rgb(0,0,0)";
-    rect_frameV_ctx.strokeRect(180,100,10 ,130);
-    //****************** 数値　表示 *******************
-    //室温　タイトル
-    rtmpt_ctx.font = "italic 55px Arial";
-    rtmpt_ctx.fillStyle = "black";
-    rtmpt_ctx.fillText(rtmpt, 50, 150,100);
-    //推奨温度 タイトル
-    coTmp_ctx.font = "italic 55px Arial";
-    coTmp_ctx.fillStyle = "black";
-    coTmp_ctx.fillText(coTmp, 200, 150,200);
-    //室温 数値
-    tmpv_ctx.font = "italic 55px Arial";
-    tmpv_ctx.fillStyle = "black";
-    tmpv_ctx.fillText(tmpTxt, 30, 220,130);
-    //推奨温度 数値
-    coTmpv_ctx.font = "italic 55px Arial";
-    coTmpv_ctx.fillStyle = "black";
-    coTmpv_ctx.fillText(ctTxt, 215, 220,180);
-  }
+        // 四角を描く
+        //モニターの外枠　
+        rect_ctxB.fillStyle = "rgb(100,100,100)";
+        rect_ctxB.fillRect(5, 20, 450, 300);
+        //モニターの画面
+        rect_ctxF.fillStyle = "rgb(168,239,175)";
+        rect_ctxF.fillRect(30, 45, 400, 250);
+        //枠 横上
+        rect_frameA_ctx.strokeStyle = "rgb(0,0,0)";
+        rect_frameA_ctx.lineWidth = 3;
+        rect_frameA_ctx.strokeRect(31, 70, 398, 65);
+        //枠 横下
+        rect_frameU_ctx.lineWidth = 3;
+        rect_frameU_ctx.strokeStyle = "rgb(0,0,0)";
+        rect_frameU_ctx.strokeRect(31, 135, 398, 65);
+        //枠 横下2
+        rect_frameU2_ctx.lineWidth = 3;
+        rect_frameU2_ctx.strokeStyle = "rgb(0,0,0)";
+        rect_frameU2_ctx.strokeRect(31, 200, 398, 65);
+        //枠　縦
+        rect_frameV_ctx.lineWidth = 3;
+        rect_frameV_ctx.strokeStyle = "rgb(0,0,0)";
+        rect_frameV_ctx.strokeRect(180,70,10 ,195);
+        //****************** 数値　表示 *******************
+        //室温　タイトル
+        rtmpt_ctx.font = "italic 55px Arial";
+        rtmpt_ctx.fillStyle = "black";
+        rtmpt_ctx.fillText(rtmpt, 50, 120,100);
+        //推奨温度 タイトル
+        coTmp_ctx.font = "italic 55px Arial";
+        coTmp_ctx.fillStyle = "black";
+        coTmp_ctx.fillText(coTmp, 30, 190,130);
+
+        //不快指数 タイトル
+        comfort_ctx.font = "italic 55px Arial";
+        comfort_ctx.fillStyle = "black";
+        comfort_ctx.fillText(comfort, 50,250 ,100);
+
+        //室温 数値
+        tmpv_ctx.font = "italic 55px Arial";
+        tmpv_ctx.fillStyle = "black";
+        tmpv_ctx.fillText(tmpTxt, 240, 120,200);
+        //推奨温度 数値
+        coTmpv_ctx.font = "italic 55px Arial";
+        coTmpv_ctx.fillStyle = "black";
+        coTmpv_ctx.fillText(ctTxt, 215, 190,180);
+
+        //不快指数 数値
+        comfortV_ctx.font = "italic 55px Arial";
+        comfortV_ctx.fillStyle = "black";
+        comfortV_ctx.fillText(comfortV, 260, 250,180);
+
+   }
 </script>
 ~~~
