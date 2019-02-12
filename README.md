@@ -17,3 +17,12 @@ now's study @ 2018
 ##### Raspberry Pi上のサーバファイル
 1. cake.zipはCakePHPを利用したグラフ表示のためのファイルが詰まっている
 2. enquete.zipはアンケートページのためのファイルが詰まっている。
+
+##### Raspberry Pi OSのインストール手順
+microSDをフォーマット → OSインストール用ソフトの書き込み →Raspberry PiにmicroSDをセットインストール
+①SDカードをフォーマット
+「macの場合」
+ディスクユーティリティで初期化
+
+図4-1.　ディスクユーティリティ画像
+exFATで初期化
