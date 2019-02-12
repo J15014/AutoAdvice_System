@@ -55,7 +55,7 @@ ACアダプタ(MicroUSBケーブル)を挿す。
 	以下コンソールより適切なものを選択する  
 ②「4 Localisation Options」　を選択  
 <img src='https://github.com/J15014/Images/blob/master/Raspberrypi%E8%A8%AD%E5%AE%9A%E7%94%BB%E9%9D%A21.png'>  
-図.　Raspberry Pi 設定画面 1
+図.　Raspberry Pi 設定画面 1  
 ③「I2 Change Timezone」　を選択  
 <img src='https://github.com/J15014/Images/blob/master/Raspberrypi%E8%A8%AD%E5%AE%9A%E7%94%BB%E9%9D%A22.png'>  
 図.　Raspberry Pi 設定画面 2  
