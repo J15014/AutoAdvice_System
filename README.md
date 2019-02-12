@@ -27,7 +27,7 @@ microSDをフォーマット → OSインストール用ソフトの書き込み
 図1.　ディスクユーティリティ画像
   
 exFATで初期化
-<img src='https://github.com/J15014/Images/blob/master/%E3%83%86%E3%82%99%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%A6%E3%83%BC%E3%83%86%E3%83%AA%E3%83%86%E3%82%A3%E8%A8%AD%E5%AE%9A%E7%94%BB%E9%9D%A2.png' width='450'>  
+<img src='https://github.com/J15014/Images/blob/master/%E3%83%86%E3%82%99%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%A6%E3%83%BC%E3%83%86%E3%83%AA%E3%83%86%E3%82%A3%E8%A8%AD%E5%AE%9A%E7%94%BB%E9%9D%A2.png' width='600'>  
 図2.　ディスクユーティリティ設定画面
   
 ddコマンドを利用してimgファイルを書き込む。
