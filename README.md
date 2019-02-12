@@ -42,23 +42,23 @@ ACアダプタ(MicroUSBケーブル)を挿す。
 
 ※電源スイッチが無い為、挿した瞬間Raspberry Piが起動する。
 緑色のLEDが点滅する。
-https://github.com/J15014/Images/blob/master/RaspberryPi%E9%9B%BB%E6%BA%90.jpg
+<img src='https://github.com/J15014/Images/blob/master/RaspberryPi%E9%9B%BB%E6%BA%90.jpg'>
 図.　Raspberry Pi
 
 ##### 時刻の日本化
 ① ~$ sudo raspi-config を実行
 	以下コンソールより適切なものを選択する
 ②「4 Localisation Options」　を選択
-https://github.com/J15014/Images/blob/master/Raspberrypi%E8%A8%AD%E5%AE%9A%E7%94%BB%E9%9D%A21.png
+<img src='https://github.com/J15014/Images/blob/master/Raspberrypi%E8%A8%AD%E5%AE%9A%E7%94%BB%E9%9D%A21.png'>
 図.　Raspberry Pi 設定画面 1
 ③「I2 Change Timezone」　を選択
-https://github.com/J15014/Images/blob/master/Raspberrypi%E8%A8%AD%E5%AE%9A%E7%94%BB%E9%9D%A22.png
+<img src='https://github.com/J15014/Images/blob/master/Raspberrypi%E8%A8%AD%E5%AE%9A%E7%94%BB%E9%9D%A22.png'>
 図.　Raspberry Pi 設定画面 2
 ④Asiaを選択
 ⑤Tokyoを選択
 ⑥Finishを選択
 Finishを選択した後、コンソールに下記図が表示される
-https://github.com/J15014/Images/blob/master/%E6%99%82%E5%88%BB%E8%A8%AD%E5%AE%9A%E5%AE%8C%E4%BA%86.png
+<img src='https://github.com/J15014/Images/blob/master/%E6%99%82%E5%88%BB%E8%A8%AD%E5%AE%9A%E5%AE%8C%E4%BA%86.png'>
 図.　時刻設定完了後コンソール画面
 ⑦dateコマンドで確認する
 
