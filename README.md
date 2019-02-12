@@ -24,5 +24,41 @@ microSDをフォーマット → OSインストール用ソフトの書き込み
 「macの場合」
 ディスクユーティリティで初期化
 
-図4-1.　ディスクユーティリティ画像
+図.　ディスクユーティリティ画像
+
 exFATで初期化
+
+図.　ディスクユーティリティ設定画面
+
+ddコマンドを利用してimgファイルを書き込む。
+~$ sudo dd bs=1m if=2018-06-27-raspbian-stretch.img of=/dev/disk2
+②sshの有効化
+書き込んだSDカードをMacに接続し、ターミナルからコマンドを打つ
+~$ touch /Volumes/boot/ssh
+
+③Raspberry Piの起動
+Raspberry PiにOSインストール済みのmicroSDを挿す。
+ACアダプタ(MicroUSBケーブル)を挿す。
+
+※電源スイッチが無い為、挿した瞬間Raspberry Piが起動する。
+緑色のLEDが点滅する。
+
+図.　Raspberry Pi
+
+##### 時刻の日本化
+① ~$ sudo raspi-config を実行
+	以下コンソールより適切なものを選択する
+②「4 Localisation Options」　を選択
+
+図.　Raspberry Pi 設定画面 1
+③「I2 Change Timezone」　を選択
+
+図.　Raspberry Pi 設定画面 2
+④Asiaを選択
+⑤Tokyoを選択
+⑥Finishを選択
+Finishを選択した後、コンソールに下記図が表示される
+
+図.　時刻設定完了後コンソール画面
+⑦dateコマンドで確認する
+
