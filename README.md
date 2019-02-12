@@ -47,7 +47,7 @@ ACアダプタ(MicroUSBケーブル)を挿す。
   
 ※電源スイッチが無い為、挿した瞬間Raspberry Piが起動する。  
 緑色のLEDが点滅する。
-<img src="https://github.com/J15014/Images/blob/master/RaspberryPi%E9%9B%BB%E6%BA%90.jpg" width='300'>  
+<img src="https://github.com/J15014/Images/blob/master/RaspberryPi%E9%9B%BB%E6%BA%90.jpg" width='350'>  
 図3.　Raspberry Pi
 
 ##### 時刻の日本化
