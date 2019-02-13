@@ -90,3 +90,42 @@ mysqlのインストール
 ```
 
 これでLAMP環境ができる
+  
+  
+### 温湿度センサ-DHT22の操作  
+#### 配線
+GPIOを良く見て配線する。  
+<img src='https://github.com/J15014/Images/blob/master/raspberrypi-pinout-40-1.png'>  
+５VとGNDを確実に配線し、データ線は使いたいところを使う。　　
+  
+#### ライブラリのダウンロード
+Adafruit_DHTを使うためのダウンロード
+  
+```
+~$ git clone https://github.com/adafruit/Adafruit_Python_DHT.git
+```
+ダウンロードしたファイル群(Adafruit_Python_DHT)はセンサーからデータを取得するプログラム(dht22_insertDB.py)と同じディレクトリに入れる.  
+
+#### mysql-connecterのインストール
+pythonからmysqlに接続するためのライブラリ
+```
+~$ sudo apt-get install mysql-connecter-python
+```
+
+#### データベースを構築する
+|データベース名|
+|:---------:|
+|live|
+
+##### テーブル作成
+| テーブル名 | 
+|:-------:|
+|environments|
+
+|     列名    |  意味  |
+|:-----------|:------------:|
+| id         | （必須)データ整理用 |
+| temperature| 室内温度 |
+| humid      | 室内湿度 |
+| uploaded   |  日時 |
+
