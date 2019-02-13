@@ -67,3 +67,26 @@ Finishを選択した後、コンソールに下記図が表示される
 図6.　時刻設定完了後コンソール画面  
 ⑦dateコマンドで確認する  
 
+### LAMP環境の構築  
+apt-getを更新する  
+```
+~$ sudo apt-get update
+```
+Apache2をインストール  
+```
+~$ sudo apt-get install apache2
+```
+PHPをインストール  
+```
+~$ sudo apt-get install php
+```
+2018年12月現在、PHPのバージョンは７になる.  
+  
+  
+mysqlのインストール
+
+```
+~$ sudo apt-get install mysql-server
+```
+
+これでLAMP環境ができる
