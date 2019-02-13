@@ -18,7 +18,7 @@ now's study @ 2018
 1. cake.zipはCakePHPを利用したグラフ表示のためのファイルが詰まっている
 2. enquete.zipはアンケートページのためのファイルが詰まっている。
 
-##### Raspberry Pi OSのインストール手順  
+### Raspberry Pi OSのインストール手順  
 microSDをフォーマット → OSインストール用ソフトの書き込み →Raspberry PiにmicroSDをセットインストール  
 ①SDカードをフォーマット  
 「macの場合」  
@@ -50,8 +50,8 @@ ACアダプタ(MicroUSBケーブル)を挿す。
 <img src="https://github.com/J15014/Images/blob/master/RaspberryPi%E9%9B%BB%E6%BA%90.jpg" width='350'>  
 図3.　Raspberry Pi
 
-##### 時刻の日本化
-① ~$ sudo raspi-config を実行  
+### 時刻の日本化
+① ``` ~$ sudo raspi-config ``` を実行  
 	以下コンソールより適切なものを選択する  
 ②「4 Localisation Options」　を選択  
 <img src='https://github.com/J15014/Images/blob/master/Raspberrypi%E8%A8%AD%E5%AE%9A%E7%94%BB%E9%9D%A21.png'>  
