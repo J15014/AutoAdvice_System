@@ -133,3 +133,6 @@ pythonからmysqlに接続するためのライブラリ
 dht22_insertDB.py  
 mysqlにアクセスするユーザ名やパスワードなどを編集する
 
+sql接続部
+userやpasswordの編集
+
